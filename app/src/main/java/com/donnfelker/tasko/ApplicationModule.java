@@ -2,6 +2,8 @@ package com.donnfelker.tasko;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import javax.inject.Singleton;
 
@@ -22,6 +24,12 @@ public class ApplicationModule {
     @Singleton
     public Context provideContext() {
         return application;
+    }
+
+    @Provides
+    @Singleton
+    public SharedPreferences provideSharedPreferences(Context context) {
+        return PreferenceManager.getDefaultSharedPreferences(context);
     }
 
 }
